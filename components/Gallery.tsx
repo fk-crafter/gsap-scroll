@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -31,11 +32,12 @@ export default function Gallery() {
         pin: true,
         anticipatePin: 1,
         onUpdate: (self) => {
-          const totalWidth = 300; // en px, largeur totale de la "track" de ticks
-          const boxWidth = 60; // largeur de la boîte de progression
+          const totalWidth = 303;
+          const boxStartWidth = 10;
           const progress = self.progress;
-          const left = progress * (totalWidth - boxWidth);
-          box.style.transform = `translateX(${left}px)`;
+          const newWidth =
+            boxStartWidth + progress * (totalWidth - boxStartWidth);
+          box.style.width = `${newWidth}px`;
         },
       },
     });
@@ -71,20 +73,17 @@ export default function Gallery() {
         </div>
       </main>
 
-      {/* Barre de progression style "ticks" + box */}
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
         <div className="relative w-[300px] h-[30px]">
-          {/* Ticks */}
           <div className="absolute top-1/2 left-0 w-full flex justify-between -translate-y-1/2">
             {Array.from({ length: 30 }).map((_, i) => (
               <div key={i} className="w-px h-6 bg-white opacity-80" />
             ))}
           </div>
 
-          {/* Boîte mobile */}
           <div
             ref={boxRef}
-            className="absolute top-1/2 -translate-y-1/2 w-[60px] h-[24px] border border-white"
+            className="absolute top-1/2 left-0 -translate-y-1/2 w-[20px] h-[24px] border bg-black border-white"
           />
         </div>
       </div>
