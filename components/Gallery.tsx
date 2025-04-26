@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,16 +54,66 @@ export default function Gallery() {
   }, []);
 
   const images = [
-    { src: "/img1.png", logo: "/logo/nike.png", name: "Nike" },
-    { src: "/img2.png", logo: "/logo/bershka.png", name: "Bershka" },
-    { src: "/img3.png", logo: "/logo/yves-rocher.png", name: "Yves Rocher" },
-    { src: "/img4.png", logo: "/logo/gucci.png", name: "Gucci" },
-    { src: "/img5.png", logo: "/logo/chanel.png", name: "Chanel" },
-    { src: "/img6.png", logo: "/logo/prada.png", name: "Prada" },
-    { src: "/img7.jpg", logo: "/logo/hermes.png", name: "Hermès" },
-    { src: "/img8.png", logo: "/logo/versace.png", name: "Versace" },
-    { src: "/img9.jpg", logo: "/logo/lacoste.jpg", name: "Lacoste" },
-    { src: "/img10.jpg", logo: "/logo/zara.png", name: "Zara" },
+    {
+      src: "/img1.png",
+      logo: "/logo/nike.png",
+      name: "Nike",
+      link: "https://www.nike.com/",
+    },
+    {
+      src: "/img2.png",
+      logo: "/logo/bershka.png",
+      name: "Bershka",
+      link: "https://www.bershka.com/",
+    },
+    {
+      src: "/img3.png",
+      logo: "/logo/yves-rocher.png",
+      name: "Yves Rocher",
+      link: "https://www.yves-rocher.fr/",
+    },
+    {
+      src: "/img4.png",
+      logo: "/logo/gucci.png",
+      name: "Gucci",
+      link: "https://www.gucci.com/",
+    },
+    {
+      src: "/img5.png",
+      logo: "/logo/chanel.png",
+      name: "Chanel",
+      link: "https://www.chanel.com/",
+    },
+    {
+      src: "/img6.png",
+      logo: "/logo/prada.png",
+      name: "Prada",
+      link: "https://www.prada.com/",
+    },
+    {
+      src: "/img7.jpg",
+      logo: "/logo/hermes.png",
+      name: "Hermès",
+      link: "https://www.hermes.com/",
+    },
+    {
+      src: "/img8.png",
+      logo: "/logo/versace.png",
+      name: "Versace",
+      link: "https://www.versace.com/",
+    },
+    {
+      src: "/img9.jpg",
+      logo: "/logo/lacoste.jpg",
+      name: "Lacoste",
+      link: "https://www.lacoste.com/",
+    },
+    {
+      src: "/img10.jpg",
+      logo: "/logo/zara.png",
+      name: "Zara",
+      link: "https://www.zara.com/",
+    },
   ];
 
   return (
@@ -83,11 +134,14 @@ export default function Gallery() {
             style={{ width: "max-content" }}
           >
             {images.map((item, i) => (
-              <div
+              <Link
+                href={item.link}
                 key={i}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative w-[30vw] h-[80vh] flex-shrink-0 rounded-2xl overflow-hidden bg-white"
               >
-                <div className="relative w-full h-full overflow-hidden">
+                <div className="relative cursor-pointer w-full h-full overflow-hidden">
                   <Image
                     src={item.src}
                     alt={item.name}
@@ -105,7 +159,7 @@ export default function Gallery() {
                     />
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -126,7 +180,7 @@ export default function Gallery() {
         </div>
       </div>
 
-      <div style={{ height: "630vh" }} />
+      <div style={{ height: "635vh" }} />
     </>
   );
 }
