@@ -101,7 +101,7 @@ export default function Gallery() {
                       alt={`${item.name} logo`}
                       width={100}
                       height={100}
-                      className="object-contain"
+                      className="object-contain z-10 scale-y-0 group-hover:scale-y-100 opacity-0 group-hover:opacity-100 transition-all duration-500 origin-center"
                     />
                   </div>
                 </div>
