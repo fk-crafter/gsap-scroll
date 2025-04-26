@@ -53,16 +53,16 @@ export default function Gallery() {
   }, []);
 
   const images = [
-    "/img1.png",
-    "/img1.png",
-    "/img1.png",
-    "/img1.png",
-    "/img1.png",
-    "/img1.png",
-    "/img1.png",
-    "/img1.png",
-    "/img1.png",
-    "/img1.png",
+    { src: "/img1.png", logo: "/nike-logo.png", name: "Nike" },
+    { src: "/img2.png", logo: "/bershka-logo.png", name: "Bershka" },
+    { src: "/img3.png", logo: "/yvesrocher-logo.png", name: "Yves Rocher" },
+    { src: "/img4.png", logo: "/gucci-logo.png", name: "Gucci" },
+    { src: "/img5.png", logo: "/chanel-logo.png", name: "Chanel" },
+    { src: "/img6.png", logo: "/prada-logo.png", name: "Prada" },
+    { src: "/img7.png", logo: "/hermes-logo.png", name: "Hermès" },
+    { src: "/img8.png", logo: "/versace-logo.png", name: "Versace" },
+    { src: "/img9.png", logo: "/lacoste-logo.png", name: "Lacoste" },
+    { src: "/img10.png", logo: "/zara-logo.png", name: "Zara" },
   ];
 
   return (
@@ -82,24 +82,37 @@ export default function Gallery() {
             className="flex h-full items-center gap-10 px-8"
             style={{ width: "max-content" }}
           >
-            {images.map((src, i) => (
+            {images.map((item, i) => (
               <div
                 key={i}
-                className="w-[30vw] h-[80vh] flex-shrink-0 rounded-2xl overflow-hidden bg-white"
+                className="group relative w-[30vw] h-[80vh] flex-shrink-0 rounded-2xl overflow-hidden bg-white"
               >
+                {/* Image principale */}
                 <Image
-                  src={src}
-                  alt={`img-${i}`}
+                  src={item.src}
+                  alt={item.name}
                   width={800}
                   height={1200}
                   className="w-full h-full object-cover"
                 />
+
+                {/* Logo au centre, caché par défaut */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                  <Image
+                    src={item.logo}
+                    alt={`${item.name} logo`}
+                    width={100}
+                    height={100}
+                    className="object-contain"
+                  />
+                </div>
               </div>
             ))}
           </div>
         </div>
       </main>
 
+      {/* Barre de progression */}
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
         <div className="relative w-[300px] h-[30px]">
           <div className="absolute top-1/2 left-0 w-full flex justify-between -translate-y-1/2">
