@@ -53,16 +53,16 @@ export default function Gallery() {
   }, []);
 
   const images = [
-    { src: "/img1.png", logo: "/nike-logo.png", name: "Nike" },
-    { src: "/img2.png", logo: "/bershka-logo.png", name: "Bershka" },
-    { src: "/img3.png", logo: "/yvesrocher-logo.png", name: "Yves Rocher" },
-    { src: "/img4.png", logo: "/gucci-logo.png", name: "Gucci" },
-    { src: "/img5.png", logo: "/chanel-logo.png", name: "Chanel" },
-    { src: "/img6.png", logo: "/prada-logo.png", name: "Prada" },
-    { src: "/img7.png", logo: "/hermes-logo.png", name: "Hermès" },
-    { src: "/img8.png", logo: "/versace-logo.png", name: "Versace" },
-    { src: "/img9.png", logo: "/lacoste-logo.png", name: "Lacoste" },
-    { src: "/img10.png", logo: "/zara-logo.png", name: "Zara" },
+    { src: "/img1.png", logo: "/logo/nike.png", name: "Nike" },
+    { src: "/img2.png", logo: "/logo/bershka.png", name: "Bershka" },
+    { src: "/img3.png", logo: "/logo/yves-rocher.png", name: "Yves Rocher" },
+    { src: "/img4.png", logo: "/logo/gucci.png", name: "Gucci" },
+    { src: "/img5.png", logo: "/logo/chanel.png", name: "Chanel" },
+    { src: "/img6.png", logo: "/logo/prada.png", name: "Prada" },
+    { src: "/img7.jpg", logo: "/logo/hermes.png", name: "Hermès" },
+    { src: "/img8.png", logo: "/logo/versace.png", name: "Versace" },
+    { src: "/img9.jpg", logo: "/logo/lacoste.jpg", name: "Lacoste" },
+    { src: "/img10.jpg", logo: "/logo/zara.png", name: "Zara" },
   ];
 
   return (
@@ -95,7 +95,6 @@ export default function Gallery() {
                     height={1200}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  {/* Overlay noir + logo */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
                     <Image
                       src={item.logo}
