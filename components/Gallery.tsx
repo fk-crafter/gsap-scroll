@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +14,7 @@ export default function Gallery() {
   const boxRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const container = containerRef.current;
     const track = trackRef.current;
     const box = boxRef.current;
@@ -35,7 +36,7 @@ export default function Gallery() {
         anticipatePin: 1,
         onUpdate: (self) => {
           const totalWidth = 303;
-          const boxStartWidth = 10;
+          const boxStartWidth = 0;
           const progress = self.progress;
           const newWidth =
             boxStartWidth + progress * (totalWidth - boxStartWidth);
@@ -50,6 +51,19 @@ export default function Gallery() {
       { y: "100%", duration: 1.5, ease: "power2.inOut", delay: 0.2 }
     );
   }, []);
+
+  const images = [
+    "/img1.png",
+    "/img1.png",
+    "/img1.png",
+    "/img1.png",
+    "/img1.png",
+    "/img1.png",
+    "/img1.png",
+    "/img1.png",
+    "/img1.png",
+    "/img1.png",
+  ];
 
   return (
     <>
@@ -68,13 +82,13 @@ export default function Gallery() {
             className="flex h-full items-center gap-10 px-8"
             style={{ width: "max-content" }}
           >
-            {Array.from({ length: 10 }).map((_, i) => (
+            {images.map((src, i) => (
               <div
                 key={i}
                 className="w-[30vw] h-[80vh] flex-shrink-0 rounded-2xl overflow-hidden bg-white"
               >
                 <Image
-                  src="/img.avif"
+                  src={src}
                   alt={`img-${i}`}
                   width={800}
                   height={1200}
