@@ -11,13 +11,15 @@ export default function Gallery() {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
     const track = trackRef.current;
     const box = boxRef.current;
+    const overlay = overlayRef.current;
 
-    if (!container || !track || !box) return;
+    if (!container || !track || !box || !overlay) return;
 
     const totalScroll = track.scrollWidth - container.offsetWidth;
 
@@ -41,10 +43,21 @@ export default function Gallery() {
         },
       },
     });
+
+    gsap.fromTo(
+      overlay,
+      { y: "0%" },
+      { y: "100%", duration: 1.5, ease: "power2.inOut", delay: 0.2 }
+    );
   }, []);
 
   return (
     <>
+      <div
+        ref={overlayRef}
+        className="fixed top-0 left-0 w-full h-full bg-black z-[100]"
+      />
+
       <main className="bg-black h-screen w-screen overflow-hidden text-white">
         <div
           ref={containerRef}
