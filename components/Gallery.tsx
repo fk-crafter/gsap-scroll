@@ -87,24 +87,24 @@ export default function Gallery() {
                 key={i}
                 className="group relative w-[30vw] h-[80vh] flex-shrink-0 rounded-2xl overflow-hidden bg-white"
               >
-                {/* Image principale */}
-                <Image
-                  src={item.src}
-                  alt={item.name}
-                  width={800}
-                  height={1200}
-                  className="w-full h-full object-cover"
-                />
-
-                {/* Logo au centre, caché par défaut */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                <div className="relative w-full h-full overflow-hidden">
                   <Image
-                    src={item.logo}
-                    alt={`${item.name} logo`}
-                    width={100}
-                    height={100}
-                    className="object-contain"
+                    src={item.src}
+                    alt={item.name}
+                    width={800}
+                    height={1200}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  {/* Overlay noir + logo */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                    <Image
+                      src={item.logo}
+                      alt={`${item.name} logo`}
+                      width={100}
+                      height={100}
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
               </div>
             ))}
@@ -112,7 +112,6 @@ export default function Gallery() {
         </div>
       </main>
 
-      {/* Barre de progression */}
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
         <div className="relative w-[300px] h-[30px]">
           <div className="absolute top-1/2 left-0 w-full flex justify-between -translate-y-1/2">
